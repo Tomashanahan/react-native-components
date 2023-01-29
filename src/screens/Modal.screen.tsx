@@ -1,25 +1,25 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
+
 import {Button, Modal, View, Alert, Text, Pressable} from 'react-native';
-import HeaderTitle from '../components/HeaderTitle';
-import {AppTheme} from '../theme/App.theme';
-import {useState} from 'react';
 import {StyleSheet} from 'react-native';
+
+import {ThemeContext} from '../context/Theme/Theme.context';
+
+import {AppTheme} from '../theme/App.theme';
+import HeaderTitle from '../components/HeaderTitle';
 
 function ModalComponent() {
   const [modalVisible, setModalVisible] = useState(false);
+  const {theme} = useContext(ThemeContext);
 
   return (
     <View style={AppTheme.globalMargin}>
       <HeaderTitle title="Modal" />
-      <Button
-        title="Abrir modal"
-        onPress={() => setModalVisible(true)}
-        color="#7CC36E"
-      />
+      <Button title="Abrir modal" onPress={() => setModalVisible(true)} color={theme.colors.primary} />
 
       <Modal
         animationType="slide"
-        // transparent={true}
+        transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
           Alert.alert('Modal has been closed.');
@@ -29,7 +29,7 @@ function ModalComponent() {
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Hello World!</Text>
             <Pressable
-              style={[styles.button, styles.buttonClose]}
+              style={[styles.button, {...styles.buttonClose, backgroundColor: theme.colors.primary}]}
               onPress={() => setModalVisible(!modalVisible)}>
               <Text style={styles.textStyle}>Hide Modal</Text>
             </Pressable>
@@ -67,9 +67,7 @@ const styles = StyleSheet.create({
     padding: 10,
     elevation: 2,
   },
-  buttonClose: {
-    backgroundColor: '#7CC36E',
-  },
+  buttonClose: {},
   textStyle: {
     color: 'white',
     fontWeight: 'bold',

@@ -1,10 +1,15 @@
 import React, {useState} from 'react';
+import {useContext} from 'react';
+
 import {Platform, Text} from 'react-native';
 import {RefreshControl, ScrollView, View} from 'react-native';
-import HeaderTitle from '../components/HeaderTitle';
+
 import {AppTheme} from '../theme/App.theme';
+import {ThemeContext} from '../context/Theme/Theme.context';
+import HeaderTitle from '../components/HeaderTitle';
 
 function PullToRefresh() {
+  const {theme} = useContext(ThemeContext);
   const [refreshing, setRefreshing] = useState(false);
   const [data, setData] = useState('');
 
@@ -27,7 +32,7 @@ function PullToRefresh() {
       }>
       <View style={AppTheme.globalMargin}>
         <HeaderTitle title="PullToRefresh" />
-        <Text>{data}</Text>
+        <Text style={{color: theme.colors.text}}>{data}</Text>
       </View>
     </ScrollView>
   );

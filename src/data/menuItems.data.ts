@@ -51,4 +51,9 @@ export const menuListData: MenuItem[] = [
     icon: 'exit-outline',
     component: 'Sides',
   },
+  {
+    name: 'ChangeTheme',
+    icon: 'flask-outline',
+    component: 'ChangeTheme',
+  },
 ];

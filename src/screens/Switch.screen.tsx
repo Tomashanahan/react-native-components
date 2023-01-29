@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import CustomSwitch from '../components/CustomSwitch';
 import HeaderTitle from '../components/HeaderTitle';
+import {useContext} from 'react';
+import {ThemeContext} from '../context/Theme/Theme.context';
 
 interface StateProps {
   isActive: boolean;
@@ -10,6 +12,8 @@ interface StateProps {
 }
 
 const SwitchComponent = () => {
+  const {theme} = useContext(ThemeContext);
+
   const [state, setState] = useState<StateProps>({
     isActive: true,
     isHungry: false,
@@ -28,29 +32,18 @@ const SwitchComponent = () => {
     <View style={switchStyles.container}>
       <HeaderTitle title="Switches" />
       <View style={switchStyles.switchRow}>
-        <Text style={switchStyles.switchText}>isActive</Text>
-        <CustomSwitch
-          isOn={isActive}
-          onChange={value => onChange(value, 'isActive')}
-        />
+        <Text style={{...switchStyles.switchText, color: theme.colors.text}}>isActive</Text>
+        <CustomSwitch isOn={isActive} onChange={value => onChange(value, 'isActive')} />
       </View>
       <View style={switchStyles.switchRow}>
-        <Text style={switchStyles.switchText}>isHungry</Text>
-        <CustomSwitch
-          isOn={isHungry}
-          onChange={value => onChange(value, 'isHungry')}
-        />
+        <Text style={{...switchStyles.switchText, color: theme.colors.text}}>isHungry</Text>
+        <CustomSwitch isOn={isHungry} onChange={value => onChange(value, 'isHungry')} />
       </View>
       <View style={switchStyles.switchRow}>
-        <Text style={switchStyles.switchText}>isHappy</Text>
-        <CustomSwitch
-          isOn={isHappy}
-          onChange={value => onChange(value, 'isHappy')}
-        />
+        <Text style={{...switchStyles.switchText, color: theme.colors.text}}>isHappy</Text>
+        <CustomSwitch isOn={isHappy} onChange={value => onChange(value, 'isHappy')} />
       </View>
-      <Text style={switchStyles.switchText}>
-        {JSON.stringify(state, null, 3)}
-      </Text>
+      <Text style={{...switchStyles.switchText, color: theme.colors.text}}>{JSON.stringify(state, null, 3)}</Text>
     </View>
   );
 };

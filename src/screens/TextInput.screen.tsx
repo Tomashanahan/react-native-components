@@ -16,6 +16,8 @@ import {StyleSheet} from 'react-native';
 import useForm from '../hooks/useForm';
 import CustomSwitch from '../components/CustomSwitch';
 import {switchStyles} from './Switch.screen';
+import {useContext} from 'react';
+import {ThemeContext} from '../context/Theme/Theme.context';
 
 interface FormState {
   name: string;
@@ -25,6 +27,8 @@ interface FormState {
 }
 
 function TextInputComponent() {
+  const {theme} = useContext(ThemeContext);
+
   const {form, isSubscribe, onChange} = useForm<FormState>({
     name: '',
     email: '',
@@ -33,42 +37,44 @@ function TextInputComponent() {
   });
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <ScrollView>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={AppTheme.globalMargin}>
             <HeaderTitle title="TextInput" />
             <TextInput
-              style={style.textInput}
+              autoCapitalize="words"
+              autoCorrect={false}
+              keyboardAppearance={theme.currentTheme}
               onChangeText={value => onChange<string>(value, 'name')}
               placeholder="Tomas Shanahan"
-              autoCorrect={false}
-              autoCapitalize="words"
+              placeholderTextColor={'gray'}
+              style={style.textInput}
             />
             <TextInput
-              style={style.textInput}
+              autoCapitalize="none"
+              autoCorrect={false}
+              keyboardAppearance={theme.currentTheme}
+              keyboardType="email-address"
               onChangeText={value => onChange<string>(value, 'email')}
               placeholder="email@email.com"
-              autoCorrect={false}
-              autoCapitalize="none"
-              keyboardType="email-address"
+              placeholderTextColor={'gray'}
+              style={style.textInput}
             />
 
             <View style={switchStyles.switchRow}>
-              <Text style={switchStyles.switchText}>Subscribirse</Text>
-              <CustomSwitch
-                isOn={isSubscribe}
-                onChange={value => onChange<boolean>(value, 'isSubscribe')}
-              />
+              <Text style={{...switchStyles.switchText, color: theme.colors.text}}>Subscribirse</Text>
+              <CustomSwitch isOn={isSubscribe} onChange={value => onChange<boolean>(value, 'isSubscribe')} />
             </View>
 
             <TextInput
-              style={style.textInput}
+              autoCorrect={false}
+              keyboardAppearance={theme.currentTheme}
+              keyboardType="phone-pad"
               onChangeText={value => onChange<string>(value, 'phone')}
               placeholder="+54 0341-6110032"
-              autoCorrect={false}
-              keyboardType="phone-pad"
+              placeholderTextColor={'gray'}
+              style={style.textInput}
             />
 
             <HeaderTitle title={JSON.stringify(form, null, 3)} />

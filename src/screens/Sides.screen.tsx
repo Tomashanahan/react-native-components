@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
+import {useContext} from 'react';
 
+import {Animated} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {useNavigation} from '@react-navigation/native';
+
+import {ThemeContext} from '../context/Theme/Theme.context';
 import useAnimation from '../hooks/useAnimation';
-import {Animated} from 'react-native';
 
 import {
   Dimensions,
@@ -44,6 +47,8 @@ const items: Slide[] = [
 const {width} = Dimensions.get('window');
 
 function Sides() {
+  const {theme} = useContext(ThemeContext);
+
   const [activeIndex, setActiveIndex] = useState(0);
   const navigation = useNavigation();
   const {opacity, fadeIn, fadeOut} = useAnimation();
@@ -52,8 +57,8 @@ function Sides() {
     return (
       <View style={style.renderItemContainer}>
         <Image source={item.img} style={style.img} />
-        <Text style={style.title}>{item.title}</Text>
-        <Text style={style.subTitle}>{item.desc}</Text>
+        <Text style={{...style.title, color: theme.colors.primary}}>{item.title}</Text>
+        <Text style={{...style.subTitle, color: theme.colors.text}}>{item.desc}</Text>
       </View>
     );
   };
@@ -80,16 +85,16 @@ function Sides() {
         <Pagination
           dotsLength={items.length}
           activeDotIndex={activeIndex}
-          dotStyle={style.paginationDotStyle}
+          dotStyle={{...style.paginationDotStyle, backgroundColor: theme.colors.primary}}
         />
         {activeIndex === items.length - 1 && (
-          <Animated.View style={{...style.animatedView, opacity}}>
+          <Animated.View style={{...style.animatedView, opacity, backgroundColor: theme.colors.primary}}>
             <TouchableOpacity
               onPress={() => navigation.navigate('Home' as never)}
               style={style.touchableOpacity}
               activeOpacity={0.5}>
-              <Text style={style.touchableOpacityText}>Entrar</Text>
-              <Icon name="chevron-forward-outline" size={20} color="#FFFF" />
+              <Text style={{...style.touchableOpacityText, color: theme.colors.text}}>Entrar</Text>
+              <Icon name="chevron-forward-outline" size={20} color={theme.colors.text} />
             </TouchableOpacity>
           </Animated.View>
         )}
@@ -107,7 +112,6 @@ const style = StyleSheet.create({
     alignItems: 'center',
   },
   animatedView: {
-    backgroundColor: '#5856D6',
     borderRadius: 10,
     width: 80,
     height: 50,

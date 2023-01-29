@@ -1,11 +1,15 @@
 import React from 'react';
-import {View, StyleSheet, Button, Alert, Platform} from 'react-native';
+import {useContext} from 'react';
 
+import {View, StyleSheet, Button, Alert, Platform} from 'react-native';
 import prompt from 'react-native-prompt-android';
 
+import {ThemeContext} from '../context/Theme/Theme.context';
 import HeaderTitle from '../components/HeaderTitle';
 
 const AlertComponent = () => {
+  const {theme} = useContext(ThemeContext);
+
   const createTwoButtonAlert = () =>
     Alert.alert('Alert Title', 'My Alert Msg', [
       {
@@ -52,8 +56,7 @@ const AlertComponent = () => {
           },
           {
             text: 'OK',
-            onPress: password =>
-              console.log('OK Pressed, password: ' + password),
+            onPress: password => console.log('OK Pressed, password: ' + password),
           },
         ],
         {
@@ -69,9 +72,9 @@ const AlertComponent = () => {
   return (
     <View style={styles.container}>
       <HeaderTitle title="Alerts" />
-      <Button title={'2-Button Alert'} onPress={createTwoButtonAlert} />
-      <Button title={'3-Button Alert'} onPress={createThreeButtonAlert} />
-      <Button title={'Show Prompt'} onPress={showPrompt} />
+      <Button title={'2-Button Alert'} onPress={createTwoButtonAlert} color={theme.colors.primary} />
+      <Button title={'3-Button Alert'} onPress={createThreeButtonAlert} color={theme.colors.primary} />
+      <Button title={'Show Prompt'} onPress={showPrompt} color={theme.colors.primary} />
     </View>
   );
 };

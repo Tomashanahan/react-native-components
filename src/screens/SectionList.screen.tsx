@@ -6,6 +6,8 @@ import HeaderTitle from '../components/HeaderTitle';
 import {AppTheme} from '../theme/App.theme';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import FlatListSeparator from '../components/FlatListSeparator';
+import {ThemeContext} from '../context/Theme/Theme.context';
+import {useContext} from 'react';
 
 interface Casas {
   casa: string;
@@ -89,28 +91,27 @@ const casas: Casas[] = [
 
 function SectionListComponent() {
   const {top} = useSafeAreaInsets();
+  const {theme} = useContext(ThemeContext);
 
   return (
     <View style={{...style.sectionListContainer, marginTop: top}}>
       <SectionList
         sections={casas}
         keyExtractor={(item, index) => item + index}
-        ListHeaderComponent={() => (
-          <HeaderTitle title="Section List Component" />
-        )}
+        ListHeaderComponent={() => <HeaderTitle title="Section List Component" />}
         ListFooterComponent={() => <View style={style.flatListSeparator} />}
         renderItem={({item}) => (
-          <View style={style.item}>
+          <View style={{...style.item, backgroundColor: theme.colors.primary}}>
             <Text style={style.title}>{item}</Text>
           </View>
         )}
         renderSectionHeader={({section: {casa}}) => (
-          <Text style={style.header}>{casa}</Text>
+          <Text style={{...style.header, backgroundColor: theme.colors.background, color: theme.colors.text}}>
+            {casa}
+          </Text>
         )}
         renderSectionFooter={({section: {data}}) => (
-          <Text style={style.footerTitle}>
-            Total de elementos: {data.length}
-          </Text>
+          <Text style={{...style.footerTitle, color: theme.colors.text}}>Total de elementos: {data.length}</Text>
         )}
         SectionSeparatorComponent={() => <FlatListSeparator />}
         showsVerticalScrollIndicator={false}
@@ -126,7 +127,6 @@ const style = StyleSheet.create({
     flex: 1,
   },
   item: {
-    backgroundColor: '#7CC36E',
     padding: 10,
     marginVertical: 8,
     borderRadius: 10,
@@ -140,7 +140,7 @@ const style = StyleSheet.create({
   },
   title: {
     fontSize: 15,
-    color: '#000',
+    color: '#FFFF',
   },
   footerTitle: {
     fontSize: 15,
