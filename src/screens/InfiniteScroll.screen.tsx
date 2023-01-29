@@ -29,7 +29,7 @@ function InfiniteScrollComponent() {
         onEndReachedThreshold={0.5}
         renderItem={value => (
           <FadeInImage
-            uri={`https://picsum.photos/id/${value.index}/500/400`}
+            uri={`https://picsum.photos/id/${value.index}/1024/1024`}
             style={style.img}
           />
         )}

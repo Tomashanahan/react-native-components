@@ -30,11 +30,7 @@ export const FadeInImage = ({uri, style = {}}: Props) => {
         alignItems: 'center',
       }}>
       {isLoading && (
-        <ActivityIndicator
-          style={{position: 'absolute'}}
-          color="#5856D6"
-          size={30}
-        />
+        <ActivityIndicator style={{position: 'absolute'}} size={30} />
       )}
 
       <Animated.Image
@@ -42,8 +38,6 @@ export const FadeInImage = ({uri, style = {}}: Props) => {
         onLoadEnd={finishLoading}
         style={{
           ...(style as any),
-          // width: '100%',
-          // height: 400,
           opacity,
         }}
       />
