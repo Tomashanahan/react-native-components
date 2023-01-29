@@ -9,7 +9,7 @@ interface Props {
   titleColor?: string;
 }
 
-function HeaderTitle({title, titleColor}: Props) {
+function HeaderTitle({title, titleColor = '#000'}: Props) {
   const {top} = useSafeAreaInsets();
   return (
     <View style={{marginTop: top}}>

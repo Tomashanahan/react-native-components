@@ -25,35 +25,37 @@ const SwitchComponent = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={switchStyles.container}>
       <HeaderTitle title="Switches" />
-      <View style={styles.switchRow}>
-        <Text style={styles.switchText}>isActive</Text>
+      <View style={switchStyles.switchRow}>
+        <Text style={switchStyles.switchText}>isActive</Text>
         <CustomSwitch
           isOn={isActive}
           onChange={value => onChange(value, 'isActive')}
         />
       </View>
-      <View style={styles.switchRow}>
-        <Text style={styles.switchText}>isHungry</Text>
+      <View style={switchStyles.switchRow}>
+        <Text style={switchStyles.switchText}>isHungry</Text>
         <CustomSwitch
           isOn={isHungry}
           onChange={value => onChange(value, 'isHungry')}
         />
       </View>
-      <View style={styles.switchRow}>
-        <Text style={styles.switchText}>isHappy</Text>
+      <View style={switchStyles.switchRow}>
+        <Text style={switchStyles.switchText}>isHappy</Text>
         <CustomSwitch
           isOn={isHappy}
           onChange={value => onChange(value, 'isHappy')}
         />
       </View>
-      <Text style={styles.switchText}>{JSON.stringify(state, null, 3)}</Text>
+      <Text style={switchStyles.switchText}>
+        {JSON.stringify(state, null, 3)}
+      </Text>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
+export const switchStyles = StyleSheet.create({
   container: {
     flex: 1,
     marginVertical: 10,

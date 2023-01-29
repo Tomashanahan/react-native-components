@@ -12,13 +12,18 @@ export const menuListData: MenuItem[] = [
     component: 'Animation102',
   },
   {
-    name: 'SwitchComponent',
+    name: 'Switch Component',
     icon: 'toggle-outline',
     component: 'SwitchComponent',
   },
   {
-    name: 'AlertComponent',
+    name: 'Alert Component',
     icon: 'alert-circle-outline',
     component: 'AlertComponent',
+  },
+  {
+    name: 'Text Input',
+    icon: 'file-tray-outline',
+    component: 'TextInputComponent',
   },
 ];
