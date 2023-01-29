@@ -41,4 +41,9 @@ export const menuListData: MenuItem[] = [
     icon: 'copy-outline',
     component: 'ModalComponent',
   },
+  {
+    name: 'InfiniteScroll',
+    icon: 'download-outline',
+    component: 'InfiniteScrollComponent',
+  },
 ];
