@@ -36,4 +36,9 @@ export const menuListData: MenuItem[] = [
     icon: 'list-outline',
     component: 'SectionList',
   },
+  {
+    name: 'Modal',
+    icon: 'copy-outline',
+    component: 'ModalComponent',
+  },
 ];

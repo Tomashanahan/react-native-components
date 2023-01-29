@@ -9,6 +9,7 @@ import SwitchComponent from '../screens/Switch.screen';
 import TextInputComponent from '../screens/TextInput.screen';
 import PullToRefresh from '../screens/PullToRefresh.screen';
 import SectionListComponent from '../screens/SectionList.screen';
+import ModalComponent from '../screens/Modal.screen';
 
 const Stack = createStackNavigator();
 
@@ -25,6 +26,7 @@ export function StackNavigator() {
       <Stack.Screen name="TextInputComponent" component={TextInputComponent} />
       <Stack.Screen name="PullToRefresh" component={PullToRefresh} />
       <Stack.Screen name="SectionList" component={SectionListComponent} />
+      <Stack.Screen name="ModalComponent" component={ModalComponent} />
     </Stack.Navigator>
   );
 }
