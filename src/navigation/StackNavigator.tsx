@@ -8,13 +8,14 @@ import Home from '../screens/Home.screen';
 import SwitchComponent from '../screens/Switch.screen';
 import TextInputComponent from '../screens/TextInput.screen';
 import PullToRefresh from '../screens/PullToRefresh.screen';
+import SectionListComponent from '../screens/SectionList.screen';
 
 const Stack = createStackNavigator();
 
 export function StackNavigator() {
   return (
     <Stack.Navigator
-      screenOptions={{headerShown: false}}
+      screenOptions={{headerShown: false, cardStyle: {backgroundColor: '#FFF'}}}
       initialRouteName="Home">
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Animation101" component={Animation101} />
@@ -23,6 +24,7 @@ export function StackNavigator() {
       <Stack.Screen name="AlertComponent" component={AlertComponent} />
       <Stack.Screen name="TextInputComponent" component={TextInputComponent} />
       <Stack.Screen name="PullToRefresh" component={PullToRefresh} />
+      <Stack.Screen name="SectionList" component={SectionListComponent} />
     </Stack.Navigator>
   );
 }

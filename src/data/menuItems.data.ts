@@ -31,4 +31,9 @@ export const menuListData: MenuItem[] = [
     icon: 'refresh-circle-outline',
     component: 'PullToRefresh',
   },
+  {
+    name: 'Section List',
+    icon: 'list-outline',
+    component: 'SectionList',
+  },
 ];
