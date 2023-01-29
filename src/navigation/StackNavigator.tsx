@@ -9,6 +9,7 @@ import InfiniteScrollComponent from '../screens/InfiniteScroll.screen';
 import ModalComponent from '../screens/Modal.screen';
 import PullToRefresh from '../screens/PullToRefresh.screen';
 import SectionListComponent from '../screens/SectionList.screen';
+import Sides from '../screens/Sides.screen';
 import SwitchComponent from '../screens/Switch.screen';
 import TextInputComponent from '../screens/TextInput.screen';
 
@@ -23,13 +24,11 @@ export function StackNavigator() {
       <Stack.Screen name="Animation101" component={Animation101} />
       <Stack.Screen name="Animation102" component={Animation102} />
       <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen
-        name="InfiniteScrollComponent"
-        component={InfiniteScrollComponent}
-      />
+      <Stack.Screen name="InfiniteScrollComponent" component={InfiniteScrollComponent}/>
       <Stack.Screen name="ModalComponent" component={ModalComponent} />
       <Stack.Screen name="PullToRefresh" component={PullToRefresh} />
       <Stack.Screen name="SectionList" component={SectionListComponent} />
+      <Stack.Screen name="Sides" component={Sides} />
       <Stack.Screen name="SwitchComponent" component={SwitchComponent} />
       <Stack.Screen name="TextInputComponent" component={TextInputComponent} />
     </Stack.Navigator>

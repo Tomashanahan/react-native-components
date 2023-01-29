@@ -46,4 +46,9 @@ export const menuListData: MenuItem[] = [
     icon: 'download-outline',
     component: 'InfiniteScrollComponent',
   },
+  {
+    name: 'Sides',
+    icon: 'exit-outline',
+    component: 'Sides',
+  },
 ];
