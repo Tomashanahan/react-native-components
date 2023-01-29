@@ -1,26 +1,14 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import {FlatList, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 
 import FlatListMenuItem from '../components/FlatListMenuItem';
 
 import {AppTheme} from '../theme/App.theme';
-import {MenuItem} from '../interfaces/MenuItem.interface';
-import FlatListHeader from '../components/FlatListHeader';
+import {menuListData} from '../data/menuItems.data';
 import FlatListSeparator from '../components/FlatListSeparator';
-import {StyleSheet} from 'react-native';
-
-const menuListData: MenuItem[] = [
-  {
-    name: 'Animation 101',
-    icon: 'cube-outline',
-    component: 'Animation101',
-  },
-  {
-    name: 'Animation 102',
-    icon: 'albums-outline',
-    component: 'Animation102',
-  },
-];
+import HeaderTitle from '../components/HeaderTitle';
 
 function Home() {
   return (
@@ -29,7 +17,7 @@ function Home() {
         data={menuListData}
         renderItem={({item}) => <FlatListMenuItem menuItem={item} />}
         keyExtractor={item => item.icon.toString()}
-        ListHeaderComponent={FlatListHeader}
+        ListHeaderComponent={() => <HeaderTitle title="Opciones de Menu" />}
         ItemSeparatorComponent={FlatListSeparator}
       />
     </View>

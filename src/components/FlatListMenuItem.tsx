@@ -18,11 +18,11 @@ function FlatListMenuItem({menuItem}: Props) {
       activeOpacity={0.5}
       onPress={() => navigation.navigate(menuItem.component as never)}>
       <View style={style.menuItemContainer}>
-        <Icon name={menuItem.icon} color="#000" size={20} />
+        <Icon name={menuItem.icon} color="#7CC36E" size={20} />
         <Text style={style.menuItemText}>{menuItem.name}</Text>
         <Icon
           name="chevron-forward-outline"
-          color="#000"
+          color="#7CC36E"
           size={20}
           style={style.menuItemArrow}
         />
