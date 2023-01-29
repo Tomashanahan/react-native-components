@@ -26,4 +26,9 @@ export const menuListData: MenuItem[] = [
     icon: 'file-tray-outline',
     component: 'TextInputComponent',
   },
+  {
+    name: 'Pull To Refresh',
+    icon: 'refresh-circle-outline',
+    component: 'PullToRefresh',
+  },
 ];

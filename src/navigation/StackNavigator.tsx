@@ -7,6 +7,7 @@ import Animation102 from '../screens/Animation102.screen';
 import Home from '../screens/Home.screen';
 import SwitchComponent from '../screens/Switch.screen';
 import TextInputComponent from '../screens/TextInput.screen';
+import PullToRefresh from '../screens/PullToRefresh.screen';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ export function StackNavigator() {
       <Stack.Screen name="SwitchComponent" component={SwitchComponent} />
       <Stack.Screen name="AlertComponent" component={AlertComponent} />
       <Stack.Screen name="TextInputComponent" component={TextInputComponent} />
+      <Stack.Screen name="PullToRefresh" component={PullToRefresh} />
     </Stack.Navigator>
   );
 }
